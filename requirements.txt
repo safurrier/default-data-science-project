@@ -11,4 +11,5 @@ pandas
 numpy
 matplotlib
 pandas-profiling
+pytest
 data_science_toolbox

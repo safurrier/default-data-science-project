@@ -25,10 +25,9 @@ endif
 # Use conda to install pip, setuptools and wheel
 # Install the requirements in requirements.txt using pip
 requirements: test_environment
-	conda install -y pip setuptools wheel
-#	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt # Faster but leads to environment errors more often
-	$ conda install -y -c conda-forge --file requirements.txt
-	$(PYTHON_INTERPRETER) -m pip install -r requirements_pip.txt # Install packages only available in pip
+	#conda install -y pip setuptools wheel
+	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt # Faster but leads to environment errors more often
+	#$ conda install -y -c conda-forge --file requirements.txt
 
 ## Make Dataset
 data: requirements
@@ -64,9 +63,9 @@ create_environment:
 ifeq (True,$(HAS_CONDA))
 		@echo ">>> Detected conda, creating conda environment."
 ifeq (3,$(findstring 3,$(PYTHON_INTERPRETER)))
-	conda create --name $(PROJECT_NAME) python=3
+	conda create -y --name $(PROJECT_NAME) python=3
 else
-	conda create --name $(PROJECT_NAME) python=2.7
+	conda create -y --name $(PROJECT_NAME) python=3
 endif
 		@echo ">>> New conda env created. Activate with:\nsource activate $(PROJECT_NAME)"
 else

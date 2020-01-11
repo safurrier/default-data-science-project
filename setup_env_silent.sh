@@ -17,4 +17,4 @@ source activate $project_name
 pip install -r requirements.txt
 
 # Install src as local package
-pip install -e .
+#pip install -e .
